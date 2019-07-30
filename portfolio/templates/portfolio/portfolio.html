@@ -90,7 +90,7 @@
             <div class="card mb-4 shadow-sm">
               <img src="{% static 'scenery.jpg' %}" height = 300 alt="풍경 사진"> 
               <div class="card-body">
-                <p class="card-text">Example image</p>
+                <p class="card-text lead">Example image</p>
                 <div class="d-flex justify-content-between align-items-center">
                 </div>
               </div>
@@ -99,13 +99,13 @@
         {% for portfolio in portfolios.all %}
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-            <h5>{{portfolio.title}}</h5>
             <img src="{{ portfolio.image.url }}" height = 300> 
             <div class="card-body">
-              <p class="card-text">{{ portfolio.summary }}</p>
+              <h5 align="center">{{portfolio.title}}</h5>
+              <p class="card-text lead ">{{ portfolio.summary }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <a href="{% url 'more' portfolio.id %}" class="btn btn-primary btn active" role="button" aria-pressed="true">View</a>
+                  <a href="{% url 'more' portfolio.id %}" class="lead btn btn-secondary btn active" role="button" aria-pressed="true">View</a>
                 </div>
                 
                 <small class="text-muted">{{ portfolio.updated_at.date }}</small>
@@ -122,9 +122,9 @@
 
 <footer class="text-muted">
   <div class="container d-flex justify-content-between align-items-center">
-    <p>My Portfolio is part of the Likelion 101 Blog.</p>
+    <p class="lead" align="left">My Portfolio is part of Project Likelion blog.</p>
     <p class="float-right">
-      <a href="#">Back to top</a>
+      <a class="lead text-muted" href="#">Back to top</a>
     </p>
   </div>
 </footer>

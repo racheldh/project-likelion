@@ -1,17 +1,67 @@
 {% extends 'base.html' %}
 {% block content %}
-    <br>
-    {% for blog in blogs.all %}
-    <br>
-        <center><div class="card" style="width: 50rem;"> 
+    
+<div class="container">
+
+    <div class="jumbotron p-4 p-md-5 text-white rounded bgimg">
+        <div class="col-md-6 px-0">
+            <h1 class="display-4 font-italic">Welcome to <br> Project Lion!</h1>
+            <p class="lead my-3">안녕하세요? Project Lion은 멋쟁이사자처럼 7기 첫 커리큘럼을 마치면서 만든 사이트입니다.
+                Thank you for visiting the website. Enjoy!</p>
+        </div>
+    </div>
+
+    <div class="row mb-2">
+    {% for blog in posts %}
+    
+<!--         <center><div class="card" style="width: 50rem;"> 
             <div class="card-body" style="text-align-last: left">
                 <h5 class="card-title">{{blog.title}}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{{blog.pub_date}}</h6>
                 <p class="card-text">{{blog.summary}}</p>
                 <a href="{% url 'detail' blog.id %}" class="card-link">Read More</a>
             </div>
-        </div></center>
+        </div></center> -->
+    
+        <div class="col-md-6">
+        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Blog</strong>
+            <h3 class="mb-0">{{blog.title}}</h3>
+            <div class="lead mb-1 text-muted">{{blog.pub_date}}</div>
+            <p class="card-text mb-auto">{{blog.summary}}</p>
+            <a href="{% url 'detail' blog.id %}" class="text-muted" align="right">Continue reading</a>
+            </div>
+            <div class="col-auto d-none d-lg-block bgimg">
+            <svg class="bgimg bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="lightskyblue"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text></svg>
+            </div>
+        </div>
+        <!-- <img src="static/blog/images/bg.jpg" width="100%" height="100%" alt="My Image"/> -->
+    
+    </div>
     {%endfor%}
+    </div>
+    <br>
 
 
+    <center>
+
+    
+    {% if posts.has_previous %}        
+        <a class="btn btn-outline-primary lead" href="?page={{posts.previous_page_number}}">Prev</a>
+    {% endif %}
+
+    {% if posts.has_next %}
+        <a class="btn btn-outline-primary lead" href="?page={{posts.next_page_number}}">Next</a>
+    {% endif %}
+    
+    <br>
+    <a class="lead text-muted" href="?page=1">First </a>
+    <span class="lead"> &nbsp; &nbsp; {{posts.number}}</span>
+    <span class="lead">of</span>
+    <span class="lead">{{posts.paginator.num_pages}} pages &nbsp; &nbsp; </span>
+    <a class="lead text-muted" href="?page={{posts.paginator.num_pages}}">Last</a>
+    </center>
+
+</div>
 {% endblock %}

@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-import blog.views, portfolio.views
+import blog.views, portfolio.views, accounts.views
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', blog.views.home, name='home'),
     path('blog/', include('blog.urls')),
+    path('accounts/', include('accounts.urls')),
     path('portfolio/', portfolio.views.portfolio, name='portfolio'),
     path('portfolio/<int:portfolio_id>', portfolio.views.more, name='more'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

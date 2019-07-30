@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <h1>Sign Up!</h1>
+    {% if error %}
+        <p>Password was inconsistent. Please try again.</p>
+    {% endif %}
+    <form method="POST" action="{% url 'signup' %}">
+        {% csrf_token %}
+        Username:
+        <br>
+        <input name="username" type="text" value="">
+        <br>
+        Password:
+        <br>
+        <input name="password1" type="password" value="">
+        <br>
+        Confirm Password:
+        <br>
+        <input name="password2" type="password" value="">
+        <br><br>
+        <input class="brn brn-primary" type="submit" value="Sign up">
+        <br>
+    </form>
+</div>
+
+{% endblock %}

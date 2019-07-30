@@ -1,12 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
+<center>
 <div class="container">
 <div class="contatiner">
-    <h1>{{portfolio.title}}</h1>
+    <h1 class="border-bottom" align="left">{{portfolio.title}}</h1>
+    <p class="lead" align="right">{{portfolio.updated_at.date}}</p>
     <img src="{{ portfolio.image.url }}">
-    <p>{{portfolio.updated_at}}</p>
-    <p>{{portfolio.description}}</p>
-    <p><a href="{% url 'portfolio' %}">Back to portfolio</a></p>
+    
+    <p class="lead">Description: {{portfolio.description}}</p>
+    <br><br><br>
+    
+    <p><a class="lead text-muted" href="{% url 'portfolio' %}">Back to Portfolio</a></p>
 </div>
 </div>
+</center>
+
+
 {% endblock %}
